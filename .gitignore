@@ -1,5 +1,6 @@
 node_modules/
 *.pdf
+!Juan_Sebastian_Macias_Duque_HV.pdf
 generate_pdf.js
 package.json
 package-lock.json
