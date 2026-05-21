@@ -41,7 +41,7 @@ body {
   gap: 2rem;
 }
 
-@media (max-width: 900px) {
+@media screen and (max-width: 900px) {
   .container {
     grid-template-columns: 1fr;
   }
@@ -74,6 +74,14 @@ body {
   align-items: center;
   text-align: center;
   gap: 1.5rem;
+}
+
+.sidebar-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
 }
 
 .photo-container {
@@ -425,7 +433,7 @@ body {
   gap: 1.5rem;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .skills-container {
     grid-template-columns: 1fr;
   }
@@ -561,7 +569,7 @@ body {
   width: 280px;
 }
 
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .courses-search-bar {
     width: 100%;
   }
@@ -685,12 +693,178 @@ body {
 }
 
 /* ==========================================================================
+   RESPONSIVE MOBILE STYLES
+   ========================================================================== */
+@media screen and (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  .sidebar {
+    position: relative !important;
+    top: 0 !important;
+    width: 100% !important;
+    padding: 1.5rem !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    gap: 1.25rem !important;
+    align-items: stretch !important;
+  }
+
+  .sidebar-brand {
+    flex-direction: row !important;
+    align-items: center !important;
+    text-align: left !important;
+    gap: 1.25rem !important;
+    width: 100% !important;
+  }
+
+  .photo-container {
+    width: 80px !important;
+    height: 80px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .name {
+    font-size: 1.35rem !important;
+  }
+
+  .title-sub {
+    font-size: 0.85rem !important;
+  }
+
+  .contact-info {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+    gap: 0.75rem 1.5rem !important;
+    padding-top: 1.25rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  #contact-email {
+    grid-column: auto !important;
+  }
+
+  .licenses-box {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    padding-top: 1rem !important;
+  }
+
+  .licenses-title {
+    margin-bottom: 0 !important;
+    margin-right: 0.5rem !important;
+  }
+
+  .license-tag {
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .print-box {
+    width: auto !important;
+    margin-top: 0 !important;
+    border-top: none !important;
+    padding-top: 0 !important;
+  }
+
+  .print-btn {
+    width: fit-content !important;
+    padding: 0.5rem 1rem !important;
+    font-size: 0.85rem !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    padding: 1rem 0.75rem !important;
+  }
+
+  .container {
+    gap: 1rem !important;
+  }
+
+  .glass-panel {
+    padding: 1.25rem !important;
+    border-radius: 16px !important;
+  }
+
+  .sidebar {
+    border-radius: 16px !important;
+  }
+
+  .exp-card {
+    padding: 1.1rem !important;
+    border-radius: 12px !important;
+    gap: 0.5rem !important;
+  }
+
+  .exp-duties {
+    padding-top: 0.5rem !important;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .course-card {
+    padding: 1rem !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sidebar-brand {
+    gap: 1rem !important;
+  }
+
+  .photo-container {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  .name {
+    font-size: 1.2rem !important;
+  }
+
+  .contact-info {
+    grid-template-columns: 1fr !important;
+  }
+
+  .exp-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.25rem !important;
+  }
+
+  .company-name {
+    font-size: 1.05rem !important;
+  }
+
+  .exp-meta {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.25rem !important;
+  }
+
+  .skills-container {
+    gap: 1rem !important;
+  }
+}
+
+/* ==========================================================================
    PRINT / PDF STYLES
    ========================================================================== */
 @media print {
   @page {
     size: A4;
-    margin: 20mm 15mm 20mm 15mm;
+    margin: 15mm 15mm 15mm 15mm;
   }
 
   body {
@@ -699,8 +873,8 @@ body {
     color: #1a1a1a !important;
     padding: 0 !important;
     margin: 0 !important;
-    font-size: 10pt !important;
-    line-height: 1.5 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.45 !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
@@ -723,17 +897,26 @@ body {
     padding: 0 0 0.75rem 0 !important;
     margin-bottom: 1.25rem !important;
     border-bottom: 2px solid #1a1a1a !important;
-    display: grid !important;
-    grid-template-columns: 85px 1fr auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+    text-align: left !important;
+  }
+
+  .sidebar-brand {
+    display: flex !important;
+    flex-direction: row !important;
     align-items: center !important;
     gap: 1.25rem !important;
-    text-align: left !important;
+    flex-grow: 1 !important;
   }
   
   .photo-container {
-    grid-column: 1 !important;
-    width: 85px !important;
-    height: 85px !important;
+    width: 80px !important;
+    height: 80px !important;
     background: none !important;
     box-shadow: none !important;
     padding: 0 !important;
@@ -744,31 +927,25 @@ body {
     border: 2px solid #1a1a1a !important;
     background-color: #f1f5f9 !important;
   }
-  
-  .sidebar > div:nth-child(2) {
-    grid-column: 2 !important;
-    text-align: left !important;
-  }
 
   .name {
     background: none !important;
     -webkit-text-fill-color: initial !important;
     color: #111111 !important;
-    font-size: 1.7rem !important;
+    font-size: 1.6rem !important;
     font-weight: 800 !important;
     line-height: 1.15 !important;
   }
 
   .title-sub {
     color: #4b5563 !important;
-    font-size: 0.95rem !important;
+    font-size: 0.9rem !important;
     font-weight: 600 !important;
     letter-spacing: 0.5px !important;
     margin-top: 0.15rem !important;
   }
   
   .contact-info {
-    grid-column: 3 !important;
     border-top: none !important;
     padding-top: 0 !important;
     display: flex !important;
@@ -777,31 +954,40 @@ body {
     gap: 0.25rem !important;
     font-size: 0.8rem !important;
     width: auto !important;
+    max-width: 100% !important;
     text-align: right !important;
   }
   
   .contact-item {
     color: #374151 !important;
     text-decoration: none !important;
+    display: flex !important;
+    align-items: center !important;
     justify-content: flex-end !important;
-    gap: 0.5rem !important;
+    gap: 0.4rem !important;
+    white-space: nowrap !important;
+  }
+
+  .contact-item span {
+    white-space: nowrap !important;
+    display: inline-block !important;
   }
 
   .contact-item svg {
     color: #4b5563 !important;
     width: 13px !important;
     height: 13px !important;
+    flex-shrink: 0 !important;
   }
   
   /* Driver's Licenses Layout in Header */
   .licenses-box {
     display: flex !important;
     align-items: center !important;
-    grid-column: 1 / span 3 !important;
+    width: 100% !important;
     border-top: 1px dashed #cbd5e1 !important;
     padding-top: 0.5rem !important;
     margin-top: 0.25rem !important;
-    width: 100% !important;
   }
   
   .licenses-title {
@@ -834,7 +1020,7 @@ body {
   
   /* Main content layout */
   .main-content {
-    gap: 1rem !important;
+    gap: 0.85rem !important;
   }
   
   .glass-panel {
@@ -847,8 +1033,8 @@ body {
   }
   
   .section-title {
-    font-size: 1.15rem !important;
-    margin-bottom: 0.5rem !important;
+    font-size: 1.1rem !important;
+    margin-bottom: 0.4rem !important;
     color: #111111 !important;
     background: none !important;
     -webkit-text-fill-color: initial !important;
@@ -864,21 +1050,21 @@ body {
   }
 
   .profile-desc {
-    font-size: 0.88rem !important;
+    font-size: 0.85rem !important;
     color: #374151 !important;
-    line-height: 1.5 !important;
+    line-height: 1.45 !important;
     text-align: justify !important;
   }
   
   /* Experience list and cards */
   .experience-list {
-    gap: 1rem !important;
+    gap: 0.75rem !important;
   }
 
   .exp-card {
     border: none !important;
     border-bottom: 1px dashed #e2e8f0 !important;
-    padding: 0.5rem 0 0.75rem 0 !important;
+    padding: 0.4rem 0 0.6rem 0 !important;
     background: transparent !important;
     box-shadow: none !important;
     gap: 0.2rem !important;
@@ -893,6 +1079,7 @@ body {
   
   .exp-header {
     display: flex !important;
+    flex-direction: row !important;
     justify-content: space-between !important;
     align-items: center !important;
     width: 100% !important;
@@ -901,7 +1088,7 @@ body {
 
   .company-name {
     color: #111111 !important;
-    font-size: 0.95rem !important;
+    font-size: 0.92rem !important;
     font-weight: 700 !important;
   }
   
@@ -910,22 +1097,23 @@ body {
     background: none !important;
     border: none !important;
     padding: 0 !important;
-    font-size: 0.8rem !important;
+    font-size: 0.78rem !important;
     font-weight: 600 !important;
   }
   
   .job-title {
     color: #374151 !important;
-    font-size: 0.88rem !important;
+    font-size: 0.85rem !important;
     font-weight: 600 !important;
   }
   
   .exp-meta {
     display: flex !important;
+    flex-direction: row !important;
     justify-content: space-between !important;
     align-items: center !important;
     width: 100% !important;
-    font-size: 0.78rem !important;
+    font-size: 0.75rem !important;
     color: #6b7280 !important;
     margin-bottom: 0.2rem !important;
     border: none !important;
@@ -942,11 +1130,11 @@ body {
     border-top: none !important;
     padding-top: 0.15rem !important;
     margin-top: 0 !important;
-    gap: 0.2rem !important;
+    gap: 0.15rem !important;
   }
   
   .exp-duties li {
-    font-size: 0.82rem !important;
+    font-size: 0.8rem !important;
     line-height: 1.35 !important;
     padding-left: 0.85rem !important;
   }
@@ -967,7 +1155,7 @@ body {
   .skills-container {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.75rem 1.25rem !important;
+    gap: 0.5rem 1.25rem !important;
     margin-bottom: 0.25rem !important;
   }
   
@@ -983,7 +1171,7 @@ body {
   
   .skill-category-title {
     color: #111111 !important;
-    font-size: 0.85rem !important;
+    font-size: 0.82rem !important;
     border-bottom: 1.5px solid #1a1a1a !important;
     padding-bottom: 0.1rem !important;
     margin-bottom: 0.2rem !important;
@@ -991,8 +1179,8 @@ body {
   
   .skill-icon {
     color: #374151 !important;
-    width: 13px !important;
-    height: 13px !important;
+    width: 12px !important;
+    height: 12px !important;
   }
   
   .skills-list {
@@ -1004,7 +1192,7 @@ body {
     border: 1px solid #cbd5e1 !important;
     color: #374151 !important;
     padding: 0.15rem 0.35rem !important;
-    font-size: 0.7rem !important;
+    font-size: 0.68rem !important;
     border-radius: 4px !important;
   }
 
@@ -1018,7 +1206,7 @@ body {
   
   /* Education print style */
   .education-section {
-    gap: 0.5rem !important;
+    gap: 0.4rem !important;
   }
   
   .edu-item {
@@ -1031,19 +1219,19 @@ body {
   
   .edu-title {
     color: #111111 !important;
-    font-size: 0.88rem !important;
+    font-size: 0.85rem !important;
     font-weight: 700 !important;
   }
   
   .edu-school {
     color: #374151 !important;
-    font-size: 0.82rem !important;
+    font-size: 0.8rem !important;
     font-weight: 500 !important;
   }
   
   .edu-date {
     color: #6b7280 !important;
-    font-size: 0.78rem !important;
+    font-size: 0.75rem !important;
   }
   
   /* Courses/Capacitaciones print style */
@@ -1072,7 +1260,7 @@ body {
   }
   
   .course-title {
-    font-size: 0.8rem !important;
+    font-size: 0.78rem !important;
     color: #111111 !important;
     font-weight: 600 !important;
     width: 100% !important;
@@ -1085,7 +1273,7 @@ body {
     border-top: none !important;
     padding-top: 0 !important;
     margin-top: 0 !important;
-    font-size: 0.75rem !important;
+    font-size: 0.72rem !important;
     color: #4b5563 !important;
     display: flex !important;
     justify-content: flex-start !important;

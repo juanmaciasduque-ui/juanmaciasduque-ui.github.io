@@ -12,18 +12,20 @@
     
     <!-- SIDEBAR -->
     <aside class="glass-panel sidebar">
-      <div class="photo-container">
-        <!-- Renders foto.png if present, otherwise displays a clean monogram -->
-        <img src="foto.png" alt="Foto Profesional" class="profile-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="profile-photo" style="display:none; flex-direction:column; justify-content:center; align-items:center;">
-          <span style="font-family:'Outfit'; font-size:2.5rem; font-weight:800; color:var(--accent-cyan);">JS</span>
-          <span style="font-size:0.65rem; color:var(--text-muted);">Coloca foto.jpg aquí</span>
+      <div class="sidebar-brand">
+        <div class="photo-container">
+          <!-- Renders foto.png if present, otherwise displays a clean monogram -->
+          <img src="foto.png" alt="Foto Profesional" class="profile-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="profile-photo" style="display:none; flex-direction:column; justify-content:center; align-items:center;">
+            <span style="font-family:'Outfit'; font-size:2.5rem; font-weight:800; color:var(--accent-cyan);">JS</span>
+            <span style="font-size:0.65rem; color:var(--text-muted);">Coloca foto.jpg aquí</span>
+          </div>
         </div>
-      </div>
-      
-      <div>
-        <h1 class="name">Juan Sebastián Macías Duque</h1>
-        <p class="title-sub">Administrador de Empresas</p>
+        
+        <div>
+          <h1 class="name">Juan Sebastián Macías Duque</h1>
+          <p class="title-sub">Administrador de Empresas</p>
+        </div>
       </div>
       
       <div class="contact-info">
@@ -228,13 +230,13 @@
             </div>
           </article>
           
-          <!-- Liceo José Bertín -->
+          <!-- Liceo Jesús Bertín -->
           <article class="exp-card" data-profile="edu">
             <div class="exp-header">
-              <span class="company-name">Liceo José Bertín</span>
+              <span class="company-name">Liceo Jesús Bertín</span>
               <span class="exp-date">10/02/2017 - 14/12/2017</span>
             </div>
-            <div class="job-title">Docente de Educación Básica Secundaria</div>
+            <div class="job-title">Docente del Área de Emprendimiento</div>
             <div class="exp-meta">
               <span>Buga, Valle del Cauca</span>
               <span class="exp-duration">Duración: 10 meses</span>
@@ -273,13 +275,35 @@
             </div>
           </article>
           
+          <!-- Instituto CREA -->
+          <article class="exp-card" data-profile="edu">
+            <div class="exp-header">
+              <span class="company-name">Instituto CREA (Centro Regional de Estudios Artísticos S.A.S.)</span>
+              <span class="exp-date">02/02/2015 - 17/12/2016</span>
+            </div>
+            <div class="job-title">Docente del Área Administrativa (Fin de Semana)</div>
+            <div class="exp-meta">
+              <span>Pereira, Risaralda</span>
+              <span class="exp-duration">Duración: 22.5 meses (1.9 años)</span>
+            </div>
+            <ul class="exp-duties">
+              <li>Docencia en el área administrativa los días sábados y domingos (8:00 AM - 1:00 PM).</li>
+              <li>Impartición de clases y cátedras en las materias de Principios de Administración, Talento Humano, Estadística, Nómina y Contabilidad.</li>
+              <li>Planificación de contenidos educativos, diseño y aplicación de evaluaciones de desempeño estudiantil.</li>
+            </ul>
+            <div class="card-tags">
+              <span class="card-tag edu">Docencia</span>
+              <span class="card-tag edu">Administración</span>
+            </div>
+          </article>
+          
           <!-- Centro Médico Guayacanes -->
           <article class="exp-card" data-profile="admin">
             <div class="exp-header">
               <span class="company-name">Centro Médico Guayacanes (con SURA)</span>
               <span class="exp-date">01/02/2015 - 09/12/2016</span>
             </div>
-            <div class="job-title">Asistente Administrativo</div>
+            <div class="job-title">Asistente de Coordinación Administrativo</div>
             <div class="exp-meta">
               <span>Manizales, Caldas</span>
               <span class="exp-duration">Duración: 22 meses (1.8 años)</span>
@@ -294,6 +318,27 @@
               <span class="card-tag admin">Administración</span>
               <span class="card-tag admin">Salud</span>
               <span class="card-tag admin">SG-SST</span>
+            </div>
+          </article>
+
+          <!-- Instituto CREA -->
+          <article class="exp-card" data-profile="edu">
+            <div class="exp-header">
+              <span class="company-name">Instituto CREA (Centro Regional de Estudios Artísticos S.A.S.)</span>
+              <span class="exp-date">09/01/2012 - 30/11/2014</span>
+            </div>
+            <div class="job-title">Docente de Matemáticas</div>
+            <div class="exp-meta">
+              <span>Pereira, Risaralda</span>
+              <span class="exp-duration">Duración: 35 meses (2.9 años)</span>
+            </div>
+            <ul class="exp-duties">
+              <li>Docencia y planeación pedagógica de la asignatura de matemáticas básica y media.</li>
+              <li>Seguimiento al aprendizaje y retroalimentación académica continua a estudiantes del centro de estudios.</li>
+            </ul>
+            <div class="card-tags">
+              <span class="card-tag edu">Docencia</span>
+              <span class="card-tag edu">Matemáticas</span>
             </div>
           </article>
           
@@ -561,6 +606,16 @@
               <span class="course-duration">1 Mes</span>
             </div>
             <div class="course-date">Finalizado: 20/11/2019</div>
+          </article>
+
+          <article class="course-card" data-profile="admin">
+            <div class="course-badge admin">Administración</div>
+            <h3 class="course-title">Fundamentos Generales del Modelo Integrado de Planeación y Gestión – MIPG</h3>
+            <div class="course-meta">
+              <span class="course-school">Departamento Administrativo de la Función Pública</span>
+              <span class="course-duration">Curso Virtual</span>
+            </div>
+            <div class="course-date">Finalizado: 22/04/2019</div>
           </article>
 
           <!-- Otros / General -->
