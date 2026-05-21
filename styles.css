@@ -1,0 +1,1032 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg-dark: #080c14;
+  --bg-card: rgba(15, 23, 42, 0.55);
+  --bg-card-hover: rgba(20, 30, 55, 0.75);
+  --accent-cyan: #00f2fe;
+  --accent-purple: #9333ea;
+  --accent-blue: #4f46e5;
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 242, 254, 0.4);
+  --glow: 0 0 20px rgba(0, 242, 254, 0.15);
+  --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(147, 51, 234, 0.08) 0%, transparent 40%);
+  background-attachment: fixed;
+  padding: 2rem 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Glassmorphic Panel Base */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  transition: var(--transition-smooth);
+}
+
+.glass-panel:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Sidebar Styles */
+.sidebar {
+  position: sticky;
+  top: 2rem;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.photo-container {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  box-shadow: var(--glow);
+  transition: var(--transition-smooth);
+}
+
+.photo-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(0, 242, 254, 0.3);
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #1e293b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  border: 4px solid var(--bg-dark);
+}
+
+.name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #fff 40%, var(--accent-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title-sub {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contact-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: left;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-main);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.contact-item:hover {
+  color: var(--accent-cyan);
+}
+
+.contact-item svg {
+  width: 18px;
+  height: 18px;
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+.licenses-box {
+  width: 100%;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.25rem;
+  text-align: left;
+}
+
+.licenses-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+.license-tag {
+  display: inline-block;
+  background: rgba(79, 70, 229, 0.2);
+  border: 1px solid rgba(79, 70, 229, 0.4);
+  color: #c7d2fe;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  margin-right: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+/* Main Content Styles */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Profile Filters Section */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  background: rgba(15, 23, 42, 0.3);
+  padding: 0.5rem;
+  border-radius: 14px;
+  border: 1px solid var(--border-subtle);
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.filter-btn:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.35);
+}
+
+/* Sections Styling */
+.section-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, #fff, var(--text-muted));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-title::after {
+  content: '';
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border-subtle), transparent);
+}
+
+.profile-desc {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  line-height: 1.7;
+}
+
+/* Experience Cards styling */
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.exp-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  transition: var(--transition-smooth);
+}
+
+.exp-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-active);
+  background: var(--bg-card-hover);
+  box-shadow: var(--glow);
+}
+
+.exp-card.hidden {
+  display: none;
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.company-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.exp-date {
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
+  font-weight: 600;
+  background: rgba(0, 242, 254, 0.08);
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+}
+
+.job-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.exp-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.exp-duration {
+  font-weight: 500;
+  color: #a78bfa;
+}
+
+.exp-duties {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  border-top: 1px dashed var(--border-subtle);
+  padding-top: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.exp-duties li {
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.exp-duties li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--accent-cyan);
+  font-size: 0.8rem;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.card-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+.card-tag.admin {
+  background: rgba(147, 51, 234, 0.15);
+  border: 1px solid rgba(147, 51, 234, 0.3);
+  color: #d8b4fe;
+}
+
+.card-tag.edu {
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #93c5fd;
+}
+
+/* Education and Certs grid */
+.education-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.edu-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.edu-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.edu-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.edu-school {
+  font-size: 0.85rem;
+  color: var(--accent-cyan);
+}
+
+.edu-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Skills Section Dashboard */
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skill-category {
+  background: rgba(30, 41, 59, 0.2);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: var(--transition-smooth);
+}
+
+.skill-category:hover {
+  background: rgba(30, 41, 59, 0.35);
+  border-color: rgba(0, 242, 254, 0.2);
+  transform: translateY(-2px);
+}
+
+.skill-category-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.5rem;
+}
+
+.skill-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--accent-cyan);
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-pill {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-main);
+  transition: var(--transition-smooth);
+}
+
+.skill-pill:hover {
+  background: rgba(0, 242, 254, 0.05);
+  border-color: var(--accent-cyan);
+  transform: scale(1.02);
+}
+
+.skill-pill.highlight {
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(147, 51, 234, 0.2));
+  border-color: rgba(147, 51, 234, 0.5);
+  color: #e9d5ff;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(147, 51, 234, 0.15);
+}
+
+.skill-pill.highlight:hover {
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.3), rgba(147, 51, 234, 0.3));
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
+}
+
+/* Print PDF Button */
+.print-box {
+  width: 100%;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.print-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.75rem 1.25rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.35);
+  transition: var(--transition-smooth);
+}
+
+.print-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.5);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.print-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Courses & Certifications Section */
+.courses-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.courses-section-header .section-title {
+  margin-bottom: 0;
+  flex-grow: 1;
+}
+
+.courses-search-bar {
+  position: relative;
+  width: 280px;
+}
+
+@media (max-width: 600px) {
+  .courses-search-bar {
+    width: 100%;
+  }
+}
+
+#course-search-input {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 0.5rem 2.5rem 0.5rem 1rem;
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  transition: var(--transition-smooth);
+}
+
+#course-search-input:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.15);
+}
+
+.courses-search-bar .search-icon {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.course-card {
+  position: relative;
+  background: rgba(30, 41, 59, 0.3);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: var(--transition-smooth);
+}
+
+.course-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 242, 254, 0.25);
+  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.05);
+  background: rgba(30, 41, 59, 0.45);
+}
+
+.course-card.hidden {
+  display: none !important;
+}
+
+.course-badge {
+  align-self: flex-start;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+.course-badge.edu {
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #93c5fd;
+}
+
+.course-badge.admin {
+  background: rgba(147, 51, 234, 0.15);
+  border: 1px solid rgba(147, 51, 234, 0.3);
+  color: #d8b4fe;
+}
+
+.course-badge.other {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #a7f3d0;
+}
+
+.course-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.course-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border-top: 1px dashed var(--border-subtle);
+  padding-top: 0.5rem;
+  margin-top: auto;
+}
+
+.course-school {
+  font-weight: 500;
+}
+
+.course-duration {
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+.course-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   PRINT / PDF STYLES
+   ========================================================================== */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    background-image: none !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    font-size: 11pt !important;
+  }
+  
+  .container {
+    display: block !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    gap: 0 !important;
+  }
+  
+  /* Sidebar Styles for Print (Transforms to Header) */
+  .sidebar {
+    position: relative !important;
+    top: 0 !important;
+    width: 100% !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 0 1rem 0 !important;
+    margin-bottom: 1.5rem !important;
+    border-bottom: 2px solid #111111 !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    gap: 2rem !important;
+    align-items: center !important;
+  }
+  
+  .photo-container {
+    width: 110px !important;
+    height: 110px !important;
+    background: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+  }
+  
+  .profile-photo {
+    border: 2px solid #111111 !important;
+  }
+  
+  .sidebar > div {
+    text-align: left !important;
+  }
+
+  .name {
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    color: #000000 !important;
+    font-size: 2.2rem !important;
+    font-weight: 800 !important;
+  }
+
+  .title-sub {
+    color: #333333 !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+  }
+  
+  .contact-info {
+    border-top: none !important;
+    padding-top: 0 !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.4rem 1.5rem !important;
+    font-size: 0.85rem !important;
+    width: auto !important;
+  }
+  
+  .contact-item {
+    color: #333333 !important;
+  }
+
+  .contact-item svg {
+    color: #111111 !important;
+    width: 14px !important;
+    height: 14px !important;
+  }
+  
+  /* Hide UI elements in print */
+  .licenses-box,
+  .print-box,
+  .filter-bar,
+  .courses-search-bar {
+    display: none !important;
+  }
+  
+  /* Main content layout */
+  .main-content {
+    gap: 1.25rem !important;
+  }
+  
+  .glass-panel {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    backdrop-filter: none !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .section-title {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.5rem !important;
+    color: #000000 !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    border-bottom: 1.5px solid #111111 !important;
+    padding-bottom: 0.15rem !important;
+    font-weight: 700 !important;
+  }
+  
+  .section-title::after {
+    display: none !important;
+  }
+
+  .profile-desc {
+    font-size: 0.95rem !important;
+    color: #222222 !important;
+    line-height: 1.5 !important;
+  }
+  
+  /* Experience list and cards */
+  .exp-card {
+    border: none !important;
+    border-bottom: 1px dashed #cccccc !important;
+    padding: 0.75rem 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    gap: 0.3rem !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .exp-card:last-child {
+    border-bottom: none !important;
+  }
+  
+  .exp-header {
+    margin-bottom: 0.1rem !important;
+  }
+
+  .company-name {
+    color: #000000 !important;
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+  }
+  
+  .exp-date {
+    color: #000000 !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+  }
+  
+  .job-title {
+    color: #222222 !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+  }
+  
+  .exp-meta {
+    color: #555555 !important;
+  }
+  
+  .exp-duration {
+    color: #222222 !important;
+  }
+  
+  .exp-duties {
+    color: #333333 !important;
+    border-top: none !important;
+    padding-top: 0.2rem !important;
+    margin-top: 0 !important;
+    gap: 0.25rem !important;
+  }
+  
+  .exp-duties li {
+    font-size: 0.88rem !important;
+    line-height: 1.4 !important;
+    padding-left: 1rem !important;
+  }
+
+  .exp-duties li::before {
+    color: #111111 !important;
+    font-size: 0.7rem !important;
+  }
+  
+  .card-tags {
+    display: none !important;
+  }
+
+  /* Skills Print Layout */
+  .skills-container {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .skill-category {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    gap: 0.35rem !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  
+  .skill-category-title {
+    color: #000000 !important;
+    font-size: 0.9rem !important;
+    border-bottom: 1.5px solid #111111 !important;
+    padding-bottom: 0.15rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+  
+  .skill-icon {
+    color: #111111 !important;
+    width: 14px !important;
+    height: 14px !important;
+  }
+  
+  .skills-list {
+    gap: 0.35rem !important;
+  }
+  
+  .skill-pill {
+    background: transparent !important;
+    border: 1px solid #cccccc !important;
+    color: #333333 !important;
+    padding: 0.2rem 0.4rem !important;
+    font-size: 0.75rem !important;
+    border-radius: 4px !important;
+  }
+
+  .skill-pill.highlight {
+    background: #f3e8ff !important;
+    border-color: #a855f7 !important;
+    color: #6b21a8 !important;
+    font-weight: 700 !important;
+    box-shadow: none !important;
+  }
+  
+  /* Education print style */
+  .education-section {
+    gap: 0.75rem !important;
+  }
+  
+  .edu-item {
+    border-bottom: none !important;
+    padding-bottom: 0.15rem !important;
+    gap: 0.1rem !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  
+  .edu-title {
+    color: #000000 !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+  }
+  
+  .edu-school {
+    color: #333333 !important;
+    font-size: 0.88rem !important;
+    font-weight: 500 !important;
+  }
+  
+  .edu-date {
+    color: #555555 !important;
+    font-size: 0.82rem !important;
+  }
+  
+  /* Courses/Capacitaciones print style */
+  .courses-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.35rem 1.5rem !important;
+  }
+  
+  .course-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0.25rem 0 !important;
+    border-bottom: 1px solid #eeeeee !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    gap: 0.1rem !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  
+  .course-badge {
+    display: none !important;
+  }
+  
+  .course-title {
+    font-size: 0.85rem !important;
+    color: #000000 !important;
+    font-weight: 600 !important;
+    width: 100% !important;
+    line-height: 1.3 !important;
+  }
+  
+  .course-meta {
+    width: 100% !important;
+    text-align: left !important;
+    border-top: none !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    font-size: 0.78rem !important;
+    color: #444444 !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    gap: 0.5rem !important;
+  }
+  
+  .course-school {
+    color: #555555 !important;
+  }
+
+  .course-duration {
+    color: #111111 !important;
+    font-weight: 600 !important;
+  }
+  
+  .course-date {
+    display: none !important;
+  }
+}

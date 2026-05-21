@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juan Sebastián Macías Duque - Hoja de Vida Profesional</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- SIDEBAR -->
+    <aside class="glass-panel sidebar">
+      <div class="photo-container">
+        <!-- Renders foto.png if present, otherwise displays a clean monogram -->
+        <img src="foto.png" alt="Foto Profesional" class="profile-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="profile-photo" style="display:none; flex-direction:column; justify-content:center; align-items:center;">
+          <span style="font-family:'Outfit'; font-size:2.5rem; font-weight:800; color:var(--accent-cyan);">JS</span>
+          <span style="font-size:0.65rem; color:var(--text-muted);">Coloca foto.jpg aquí</span>
+        </div>
+      </div>
+      
+      <div>
+        <h1 class="name">Juan Sebastián Macías Duque</h1>
+        <p class="title-sub">Administrador de Empresas</p>
+      </div>
+      
+      <div class="contact-info">
+        <a href="mailto:juanmaciasduque@gmail.com" class="contact-item" id="contact-email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span>juanmaciasduque@gmail.com</span>
+        </a>
+        
+        <a href="tel:+573146567992" class="contact-item" id="contact-phone-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span>314 656 7992</span>
+        </a>
+        
+
+        
+        <div class="contact-item" id="contact-location">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span>Buga, Valle del Cauca, COL</span>
+        </div>
+      </div>
+      
+      <div class="licenses-box">
+        <p class="licenses-title">Licencias de Conducción</p>
+        <span class="license-tag">Moto (A2)</span>
+        <span class="license-tag">Carro (B1)</span>
+      </div>
+
+      <div class="print-box">
+        <button id="btn-print-pdf" class="print-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          <span>Descargar PDF</span>
+        </button>
+      </div>
+    </aside>
+    
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      
+      <!-- PERFIL OCUPACIONAL -->
+      <section class="glass-panel" id="about-section">
+        <h2 class="section-title">Perfil Profesional</h2>
+        <p class="profile-desc" id="profile-desc-text">
+          Administrador de Empresas de la Universidad Nacional de Colombia con una trayectoria técnica y gerencial de más de 10 años en la dirección de operaciones administrativas, estructuración de proyectos productivos, auditoría de inventarios físicos y control presupuestal. Cuenta con amplia experiencia internacional como Gerente General liderando la planificación de personal, y en el sector público como Supervisor de Proyectos de impacto municipal. Especializado en educación para el trabajo como Instructor del SENA y docente de educación secundaria mediante metodologías STEAM y ambientes virtuales Blackboard. Competente en la optimización de procesos de negocio y flujos de trabajo mediante la integración de herramientas de Inteligencia Artificial (IA) generativa y Prompt Engineering para la co-creación técnica de soluciones digitales.
+        </p>
+      </section>
+      
+      <!-- INTERACTIVE FILTERS -->
+      <section class="filter-bar" id="filters-container">
+        <button class="filter-btn active" data-target="all" id="btn-filter-all">Mostrar Todo</button>
+        <button class="filter-btn" data-target="admin" id="btn-filter-admin">Administración y Proyectos</button>
+        <button class="filter-btn" data-target="edu" id="btn-filter-edu">Educación e Instrucción</button>
+      </section>
+      
+      <!-- EXPERIENCIA LABORAL -->
+      <section class="glass-panel" id="experience-section">
+        <h2 class="section-title">Experiencia Laboral</h2>
+        
+        <div class="experience-list" id="experience-list-container">
+          
+          <!-- Alcaldía de Guadalajara de Buga - Supervisor -->
+          <article class="exp-card" data-profile="admin">
+            <div class="exp-header">
+              <span class="company-name">Alcaldía de Guadalajara de Buga</span>
+              <span class="exp-date">17/02/2025 - 17/08/2025</span>
+            </div>
+            <div class="job-title">Supervisor de Proyectos Productivos (Contratista)</div>
+            <div class="exp-meta">
+              <span>Buga, Valle del Cauca</span>
+              <span class="exp-duration">Duración: 6 meses</span>
+            </div>
+            <ul class="exp-duties">
+              <li>Supervisión y coordinación técnica y administrativa de proyectos productivos municipales.</li>
+              <li>Atención integral a beneficiarios y clientes de acuerdo con los protocolos técnicos y de servicio público.</li>
+              <li>Control y auditoría de inventarios físicos de la unidad administrativa de acuerdo con directrices y procedimientos vigentes.</li>
+              <li>Elaboración y presentación de informes detallados sobre procesos administrativos y cumplimiento de metas de gestión.</li>
+              <li>Ejecución de planes y programas orientados a alcanzar los objetivos organizacionales del municipio.</li>
+              <li>Dirección de entrenamientos y capacitación para el talento humano a cargo.</li>
+            </ul>
+            <div class="card-tags">
+              <span class="card-tag admin">Administración</span>
+              <span class="card-tag admin">Sector Público</span>
+            </div>
+          </article>
+          
+          <!-- Alcaldía de Guadalajara de Buga - Asistente -->
+          <article class="exp-card" data-profile="admin">
+            <div class="exp-header">
+              <span class="company-name">Alcaldía de Guadalajara de Buga</span>
+              <span class="exp-date">16/10/2024 - 31/12/2024</span>
+            </div>
+            <div class="job-title">Asistente Administrativo (Contratista)</div>
+            <div class="exp-meta">
+              <span>Buga, Valle del Cauca</span>
+              <span class="exp-duration">Duración: 2.5 meses</span>
+            </div>
+            <ul class="exp-duties">
+              <li>Organización y catalogación de archivos de gestión institucional conforme a la normativa archivística.</li>
+              <li>Auditoría y control de inventarios de la unidad administrativa.</li>
+              <li>Registro sistemático de información en sistemas corporativos de gestión interna (ERP).</li>
+              <li>Apoyo en el control presupuestal y de cronogramas de los proyectos asignados.</li>
+              <li>Coordinación de reuniones, agendas administrativas y elaboración de actas oficiales.</li>
+            </ul>
+            <div class="card-tags">
+              <span class="card-tag admin">Administración</span>
+              <span class="card-tag admin">Archivos</span>
+            </div>
+          </article>
+          
+          <!-- Aporte Médico Perú SAC -->
+          <article class="exp-card" data-profile="admin">
+            <div class="exp-header">
+              <span class="company-name">Aporte Médico Perú SAC</span>
+              <span class="exp-date">15/11/2022 - 25/09/2024</span>
+            </div>
+            <div class="job-title">Gerente General</div>
+            <div class="exp-meta">
+              <span>Lima, Perú</span>
+              <span class="exp-duration">Duración: 22 meses (1.8 años)</span>
+            </div>
+            <ul class="exp-duties">
+              <li>Liderazgo estratégico, representación legal y toma de decisiones corporativas de la organización a nivel nacional.</li>
+              <li>Diseño, formulación y aprobación de políticas, programas y estrategias comerciales de la compañía.</li>
+              <li>Supervisión y coordinación de las divisiones operativas, comerciales y administrativas de la empresa.</li>
+              <li>Planificación de la estructura de personal, talento humano, ascensos y capacitaciones corporativas.</li>
+              <li>Asignación, gestión y control de presupuestos y recursos administrativos y financieros de la entidad.</li>
+            </ul>
+            <div class="card-tags">
+              <span class="card-tag admin">Gerencia</span>
+              <span class="card-tag admin">Operaciones</span>
+              <span class="card-tag admin">Internacional</span>
+            </div>
+          </article>
+          
+          <!-- SENA -->
+          <article class="exp-card" data-profile="edu">
+            <div class="exp-header">
+              <span class="company-name">SENA Valle - Centro Agropecuario de Buga</span>
+              <span class="exp-date">2019 - 2021 (Múltiples periodos)</span>
+            </div>
+            <div class="job-title">Instructor de Formación para el Trabajo</div>
+            <div class="exp-meta">
+              <span>Buga, Valle del Cauca</span>
+              <span class="exp-duration">Total acumulado: ~30 meses</span>
+            </div>
+            <ul class="exp-duties">
+              <li>Diseño y desarrollo curricular en el área de comercio, administración y emprendimiento.</li>
+              <li>Orientación técnico-pedagógica a estudiantes en la creación y consolidación de proyectos productivos y empresariales.</li>
+              <li>Planificación y ejecución de sesiones de aprendizaje dinámicas mediante metodologías activas y STEAM.</li>
+              <li>Diseño y aplicación de instrumentos de evaluación de competencias laborales bajo normativa SENA.</li>
+              <li>Elaboración de guías de aprendizaje y material didáctico interactivo para el LMS institucional (Blackboard/Territorium).</li>
+            </ul>
+            <div class="card-tags">
+              <span class="card-tag edu">Educación</span>
+              <span class="card-tag edu">Pedagogía</span>
+              <span class="card-tag edu">SENA</span>
+            </div>
+          </article>
+          
+          <!-- Buga Plaza -->
+          <article class="exp-card" data-profile="admin">
+            <div class="exp-header">
+              <span class="company-name">Centro Comercial Buga Plaza</span>
+              <span class="exp-date">25/07/2018 - 02/02/2019</span>
+            </div>
+            <div class="job-title">Coordinador de Mercadeo</div>
+            <div class="exp-meta">
+              <span>Buga, Valle del Cauca</span>
+              <span class="exp-duration">Duración: 6.3 meses</span>
+            </div>
+            <ul class="exp-duties">
+              <li>Supervisión, planeación y programación de actividades comerciales de vendedores y asesores.</li>
+              <li>Desarrollo de campañas de mercadeo estratégico, eventos de promoción comercial y fidelización de clientes.</li>
+              <li>Control y proyección de presupuestos y metas comerciales mensuales.</li>
+              <li>Elaboración de análisis cuantitativos de crédito y aprobación de solicitudes de financiamiento.</li>
+              <li>Realización de estudios de mercado periódicos para evaluar la competencia y demanda local.</li>
+            </ul>
+            <div class="card-tags">
+              <span class="card-tag admin">Mercadeo</span>
+              <span class="card-tag admin">Comercial</span>
+            </div>
+          </article>
+          
+          <!-- Alcaldía de Buga - Instructor Comercio -->
+          <article class="exp-card" data-profile="edu">
+            <div class="exp-header">
+              <span class="company-name">Alcaldía de Guadalajara de Buga</span>
+              <span class="exp-date">21/01/2018 - 27/07/2018</span>
+            </div>
+            <div class="job-title">Instructor de Comercio / Coordinador de Unidades Productivas</div>
+            <div class="exp-meta">
+              <span>Buga, Valle del Cauca</span>
+              <span class="exp-duration">Duración: 6.2 meses</span>
+            </div>
+            <ul class="exp-duties">
+              <li>Formación y asesoramiento a emprendedores locales en técnicas de ventas, servicio al cliente y administración comercial.</li>
+              <li>Acompañamiento a microempresarios en la estructuración de sus modelos de negocio.</li>
+              <li>Coordinación de ferias de emprendimiento y redes de valor locales apoyadas por el municipio.</li>
+            </ul>
+            <div class="card-tags">
+              <span class="card-tag edu">Capacitación</span>
+              <span class="card-tag edu">Emprendimiento</span>
+            </div>
+          </article>
+          
+          <!-- Liceo José Bertín -->
+          <article class="exp-card" data-profile="edu">
+            <div class="exp-header">
+              <span class="company-name">Liceo José Bertín</span>
+              <span class="exp-date">10/02/2017 - 14/12/2017</span>
+            </div>
+            <div class="job-title">Docente de Educación Básica Secundaria</div>
+            <div class="exp-meta">
+              <span>Buga, Valle del Cauca</span>
+              <span class="exp-duration">Duración: 10 meses</span>
+            </div>
+            <ul class="exp-duties">
+              <li>Planeación y dictado de clases en las áreas de ciencias económicas, políticas y de emprendimiento.</li>
+              <li>Diseño, aplicación y retroalimentación de evaluaciones periódicas de desempeño estudiantil.</li>
+              <li>Organización de actividades académicas complementarias como debates, foros escolares y proyectos de aula.</li>
+            </ul>
+            <div class="card-tags">
+              <span class="card-tag edu">Docencia</span>
+              <span class="card-tag edu">Secundaria</span>
+            </div>
+          </article>
+          
+          <!-- Eficacia -->
+          <article class="exp-card" data-profile="admin">
+            <div class="exp-header">
+              <span class="company-name">Eficacia</span>
+              <span class="exp-date">16/11/2016 - 27/01/2017</span>
+            </div>
+            <div class="job-title">Supervisor de Ventas Hogares Junior (AUR)</div>
+            <div class="exp-meta">
+              <span>Manizales, Caldas</span>
+              <span class="exp-duration">Duración: 2.4 meses</span>
+            </div>
+            <ul class="exp-duties">
+              <li>Supervisión y control en campo del equipo de asesores de ventas externas (Puerta a Puerta).</li>
+              <li>Selección, inducción y capacitación continua del equipo comercial.</li>
+              <li>Planificación de rutas de ventas y seguimiento diario de cumplimiento de metas presupuestadas.</li>
+              <li>Control de recaudo de cartera comercial y evaluación de solicitudes de crédito de clientes.</li>
+            </ul>
+            <div class="card-tags">
+              <span class="card-tag admin">Ventas</span>
+              <span class="card-tag admin">Liderazgo</span>
+            </div>
+          </article>
+          
+          <!-- Centro Médico Guayacanes -->
+          <article class="exp-card" data-profile="admin">
+            <div class="exp-header">
+              <span class="company-name">Centro Médico Guayacanes (con SURA)</span>
+              <span class="exp-date">01/02/2015 - 09/12/2016</span>
+            </div>
+            <div class="job-title">Asistente Administrativo</div>
+            <div class="exp-meta">
+              <span>Manizales, Caldas</span>
+              <span class="exp-duration">Duración: 22 meses (1.8 años)</span>
+            </div>
+            <ul class="exp-duties">
+              <li>Apoyo en el control de costos y costeo de laboratorios médicos.</li>
+              <li>Procesamiento y auditoría de datos administrativos, de facturación y cobros de servicios de salud.</li>
+              <li>Implementación del Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST) y redacción de manuales de bioseguridad.</li>
+              <li>Gestión documental y control de historias clínicas o archivos confidenciales de la entidad.</li>
+            </ul>
+            <div class="card-tags">
+              <span class="card-tag admin">Administración</span>
+              <span class="card-tag admin">Salud</span>
+              <span class="card-tag admin">SG-SST</span>
+            </div>
+          </article>
+          
+        </div>
+      </section>
+      
+      <!-- FORMACIÓN ACADÉMICA -->
+      <section class="glass-panel" id="education-section">
+        <h2 class="section-title">Formación Académica</h2>
+        <div class="education-section">
+          
+          <div class="edu-item">
+            <h3 class="edu-title">Administración de Empresas</h3>
+            <span class="edu-school">Universidad Nacional de Colombia</span>
+            <span class="edu-date">Graduado — 01/04/2016</span>
+          </div>
+
+          <div class="edu-item">
+            <h3 class="edu-title">Curso: Valoración de Títulos de Renta Fija</h3>
+            <span class="edu-school">Universidad Nacional de Colombia</span>
+            <span class="edu-date">Terminado — 03/04/2014 (Intensidad: 20 Horas)</span>
+          </div>
+          
+          <div class="edu-item">
+            <h3 class="edu-title">Bachiller Académico</h3>
+            <span class="edu-school">Instituto para La Ciencia</span>
+            <span class="edu-date">Graduado — 28/11/2008</span>
+          </div>
+          
+        </div>
+      </section>
+      
+      <!-- HABILIDADES & COMPETENCIAS -->
+      <section class="glass-panel" id="skills-section">
+        <h2 class="section-title">Habilidades y Competencias Técnicas</h2>
+        <div class="skills-container">
+          
+          <div class="skill-category">
+            <h3 class="skill-category-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="skill-icon"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              Nuevas Tecnologías & Automatización
+            </h3>
+            <div class="skills-list">
+              <span class="skill-pill highlight">Manejo de Inteligencia Artificial (IA)</span>
+              <span class="skill-pill highlight">Prompt Engineering</span>
+              <span class="skill-pill">Co-creación de Software</span>
+              <span class="skill-pill">Habilidades Digitales avanzadas</span>
+              <span class="skill-pill">Gestión de la Información</span>
+              <span class="skill-pill">Ambientes Virtuales de Aprendizaje (Blackboard)</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="skill-category-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="skill-icon"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+              Gestión Administrativa & Operaciones
+            </h3>
+            <div class="skills-list">
+              <span class="skill-pill">Dirección y Gerencia General</span>
+              <span class="skill-pill">Control Presupuestal y Costeo</span>
+              <span class="skill-pill">Auditoría de Inventarios</span>
+              <span class="skill-pill">Implementación de SG-SST</span>
+              <span class="skill-pill">Gestión Documental y Archivo</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="skill-category-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="skill-icon"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              Pedagogía & Formación
+            </h3>
+            <div class="skills-list">
+              <span class="skill-pill">Diseño y Desarrollo Curricular</span>
+              <span class="skill-pill">Metodologías STEAM</span>
+              <span class="skill-pill">Evaluación de Competencias Laborales</span>
+              <span class="skill-pill">Planeación y Estrategias Pedagógicas</span>
+              <span class="skill-pill">Ingeniería Pedagógica</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="skill-category-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="skill-icon"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              Liderazgo & Comercial
+            </h3>
+            <div class="skills-list">
+              <span class="skill-pill">Atención al Cliente certificada</span>
+              <span class="skill-pill">Negociación y Redes de Valor</span>
+              <span class="skill-pill">Liderazgo de Equipos comerciales</span>
+              <span class="skill-pill">Supervisión de Proyectos públicos</span>
+            </div>
+          </div>
+          
+        </div>
+      </section>
+      
+      <!-- CAPACITACIÓN & CERTIFICADOS INTERACTIVOS -->
+      <section class="glass-panel" id="courses-section">
+        <div class="courses-section-header">
+          <h2 class="section-title">Capacitaciones y Cursos</h2>
+          <div class="courses-search-bar">
+            <input type="text" id="course-search-input" placeholder="Buscar curso o certificación..." />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </div>
+        </div>
+        <div class="courses-grid" id="courses-grid-container">
+          
+          <!-- Pedagogía / Educación -->
+          <article class="course-card" data-profile="edu">
+            <div class="course-badge edu">Pedagogía</div>
+            <h3 class="course-title">Innovación y Tecnología Aplicada a la Educación</h3>
+            <div class="course-meta">
+              <span class="course-school">Fundación Universitaria San Martín</span>
+              <span class="course-duration">120 Horas</span>
+            </div>
+            <div class="course-date">Finalizado: 11/08/2021</div>
+          </article>
+          
+          <article class="course-card" data-profile="edu">
+            <div class="course-badge edu">Pedagogía</div>
+            <h3 class="course-title">Desarrollo de Habilidades para el Desempeño del Instructor SENA</h3>
+            <div class="course-meta">
+              <span class="course-school">SENA</span>
+              <span class="course-duration">96 Horas</span>
+            </div>
+            <div class="course-date">Finalizado: 29/05/2020</div>
+          </article>
+
+          <article class="course-card" data-profile="edu">
+            <div class="course-badge edu">Pedagogía</div>
+            <h3 class="course-title">Planeación Pedagógica de la Formación Profesional</h3>
+            <div class="course-meta">
+              <span class="course-school">SENA</span>
+              <span class="course-duration">60 Horas</span>
+            </div>
+            <div class="course-date">Finalizado: 19/07/2019</div>
+          </article>
+
+          <article class="course-card" data-profile="edu">
+            <div class="course-badge edu">Pedagogía</div>
+            <h3 class="course-title">Planeación de Estrategias Pedagógicas y Técnicas Didácticas para la Formación Profesional Integral</h3>
+            <div class="course-meta">
+              <span class="course-school">SENA</span>
+              <span class="course-duration">48 Horas</span>
+            </div>
+            <div class="course-date">Finalizado: 29/07/2021</div>
+          </article>
+
+          <article class="course-card" data-profile="edu">
+            <div class="course-badge edu">Pedagogía</div>
+            <h3 class="course-title">Incorporación de Actividades STEAM como Apoyo a la Formación Profesional Integral</h3>
+            <div class="course-meta">
+              <span class="course-school">SENA</span>
+              <span class="course-duration">48 Horas</span>
+            </div>
+            <div class="course-date">Finalizado: 28/05/2021</div>
+          </article>
+
+          <article class="course-card" data-profile="edu">
+            <div class="course-badge edu">Pedagogía</div>
+            <h3 class="course-title">Elaboración de Instrumentos de Evaluación (Curso Especial)</h3>
+            <div class="course-meta">
+              <span class="course-school">SENA</span>
+              <span class="course-duration">40 Horas</span>
+            </div>
+            <div class="course-date">Finalizado: 02/08/2021</div>
+          </article>
+
+          <article class="course-card" data-profile="edu">
+            <div class="course-badge edu">Pedagogía</div>
+            <h3 class="course-title">Diagnóstico de Competencias desde la Ingeniería Pedagógica</h3>
+            <div class="course-meta">
+              <span class="course-school">SENA</span>
+              <span class="course-duration">40 Horas</span>
+            </div>
+            <div class="course-date">Finalizado: 20/05/2020</div>
+          </article>
+
+          <article class="course-card" data-profile="edu">
+            <div class="course-badge edu">Pedagogía</div>
+            <h3 class="course-title">Formación Tecnopedagógica en Ambientes Virtuales de Aprendizaje Blackboard 9.1</h3>
+            <div class="course-meta">
+              <span class="course-school">SENA</span>
+              <span class="course-duration">40 Horas</span>
+            </div>
+            <div class="course-date">Finalizado: 23/07/2019</div>
+          </article>
+
+          <article class="course-card" data-profile="edu">
+            <div class="course-badge edu">Pedagogía</div>
+            <h3 class="course-title">Inducción a Procesos Pedagógicos</h3>
+            <div class="course-meta">
+              <span class="course-school">SENA</span>
+              <span class="course-duration">40 Horas</span>
+            </div>
+            <div class="course-date">Finalizado: 03/07/2018</div>
+          </article>
+
+          <article class="course-card" data-profile="edu">
+            <div class="course-badge edu">Pedagogía</div>
+            <h3 class="course-title">El ABC para Funcionarios del SENA</h3>
+            <div class="course-meta">
+              <span class="course-school">SENA</span>
+              <span class="course-duration">40 Horas</span>
+            </div>
+            <div class="course-date">Finalizado: 20/10/2021</div>
+          </article>
+
+          <article class="course-card" data-profile="edu">
+            <div class="course-badge edu">Pedagogía</div>
+            <h3 class="course-title">Orientar Formación Presencial de Acuerdo con Procedimientos Técnicos y Normativa (Nivel Intermedio)</h3>
+            <div class="course-meta">
+              <span class="course-school">SENA</span>
+              <span class="course-duration">1 Mes</span>
+            </div>
+            <div class="course-date">Finalizado: 25/11/2019</div>
+          </article>
+
+          <!-- Administración / Gestión -->
+          <article class="course-card" data-profile="admin">
+            <div class="course-badge admin">Administración</div>
+            <h3 class="course-title">Aplicación de Técnicas para la Creación de Redes de Valor</h3>
+            <div class="course-meta">
+              <span class="course-school">SENA</span>
+              <span class="course-duration">48 Horas</span>
+            </div>
+            <div class="course-date">Finalizado: 29/11/2021</div>
+          </article>
+
+          <article class="course-card" data-profile="admin">
+            <div class="course-badge admin">Administración</div>
+            <h3 class="course-title">Desarrollo de Capacidades que Permitan Enfrentar Desafíos en Entornos Cambiantes</h3>
+            <div class="course-meta">
+              <span class="course-school">SENA</span>
+              <span class="course-duration">48 Horas</span>
+            </div>
+            <div class="course-date">Finalizado: 29/11/2021</div>
+          </article>
+
+          <article class="course-card" data-profile="admin">
+            <div class="course-badge admin">Administración</div>
+            <h3 class="course-title">Desarrollo de Habilidades Digitales para la Gestión de la Información</h3>
+            <div class="course-meta">
+              <span class="course-school">SENA</span>
+              <span class="course-duration">48 Horas</span>
+            </div>
+            <div class="course-date">Finalizado: 26/08/2021</div>
+          </article>
+
+          <article class="course-card" data-profile="admin">
+            <div class="course-badge admin">Administración</div>
+            <h3 class="course-title">Administración de Recursos Humanos</h3>
+            <div class="course-meta">
+              <span class="course-school">SENA</span>
+              <span class="course-duration">40 Horas</span>
+            </div>
+            <div class="course-date">Finalizado: 11/12/2017</div>
+          </article>
+
+          <article class="course-card" data-profile="admin">
+            <div class="course-badge admin">Administración</div>
+            <h3 class="course-title">Atender Clientes de Acuerdo con Procedimiento de Servicio y Normativa (Nivel Avanzado)</h3>
+            <div class="course-meta">
+              <span class="course-school">SENA</span>
+              <span class="course-duration">1 Mes</span>
+            </div>
+            <div class="course-date">Finalizado: 20/11/2019</div>
+          </article>
+
+          <!-- Otros / General -->
+          <article class="course-card" data-profile="other">
+            <div class="course-badge other">Idiomas</div>
+            <h3 class="course-title">Fundamentos de Inglés A2</h3>
+            <div class="course-meta">
+              <span class="course-school">SENA</span>
+              <span class="course-duration">40 Horas</span>
+            </div>
+            <div class="course-date">Finalizado: 22/12/2017</div>
+          </article>
+
+          <article class="course-card" data-profile="other">
+            <div class="course-badge other">Salud</div>
+            <h3 class="course-title">Bioseguridad Medidas Preventivas para COVID-19</h3>
+            <div class="course-meta">
+              <span class="course-school">SENA</span>
+              <span class="course-duration">3 Horas</span>
+            </div>
+            <div class="course-date">Finalizado: 17/07/2020</div>
+          </article>
+
+        </div>
+      </section>
+      
+    </main>
+    
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
