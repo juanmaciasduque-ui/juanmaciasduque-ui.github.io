@@ -83,26 +83,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 150);
       }
 
-      // 3. Filter experience cards with animation
+      // 3. Filter experience cards with a stable, immediate state
       expCards.forEach(card => {
         const cardProfile = card.getAttribute('data-profile');
+        const matchesProfile = activeProfile === 'all' || cardProfile === activeProfile;
 
-        if (activeProfile === 'all' || cardProfile === activeProfile) {
+        if (matchesProfile) {
           card.classList.remove('hidden');
-          card.style.opacity = '0';
-          card.style.transform = 'scale(0.98)';
-          setTimeout(() => {
-            card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-            card.style.opacity = '1';
-            card.style.transform = 'scale(1)';
-          }, 50);
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
         } else {
-          card.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
-          card.style.opacity = '0';
-          card.style.transform = 'scale(0.95)';
-          setTimeout(() => {
-            card.classList.add('hidden');
-          }, 200);
+          card.classList.add('hidden');
+          card.style.opacity = '';
+          card.style.transform = '';
         }
       });
 

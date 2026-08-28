@@ -280,6 +280,43 @@ body {
   line-height: 1.75;
 }
 
+.credentials-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.credential-card {
+  background: linear-gradient(180deg, #fffdf8, rgba(255, 255, 255, 0.54));
+  border: 1px solid #e5dccd;
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.credential-kicker {
+  color: var(--gold);
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.credential-card h3 {
+  color: var(--ink);
+  font-family: 'Outfit', Inter, sans-serif;
+  font-size: 1.02rem;
+  letter-spacing: 0;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.credential-card p {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
 .filter-bar {
   align-items: center;
   box-shadow: none;
@@ -498,6 +535,7 @@ body {
 
 @media screen and (max-width: 700px) {
   .impact-strip,
+  .credentials-grid,
   .skills-container {
     grid-template-columns: 1fr;
   }
