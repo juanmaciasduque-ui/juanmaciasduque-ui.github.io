@@ -317,6 +317,107 @@ body {
   line-height: 1.6;
 }
 
+.documents-heading {
+  align-items: flex-start;
+  display: flex;
+  gap: 18px;
+  justify-content: space-between;
+}
+
+.documents-heading .section-title {
+  margin-bottom: 6px;
+}
+
+.documents-intro {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.support-primary {
+  background: var(--accent-strong);
+  border-radius: 6px;
+  color: #fffaf2;
+  flex: 0 0 auto;
+  font-size: 0.84rem;
+  font-weight: 800;
+  padding: 11px 14px;
+  text-decoration: none;
+}
+
+.support-primary:hover {
+  background: var(--ink);
+}
+
+.support-groups {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.support-group {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid #e5dccd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.support-group summary {
+  color: var(--ink);
+  cursor: pointer;
+  font-family: 'Outfit', Inter, sans-serif;
+  font-size: 0.98rem;
+  font-weight: 800;
+  list-style: none;
+  padding: 15px 18px;
+}
+
+.support-group summary::-webkit-details-marker {
+  display: none;
+}
+
+.support-group summary::after {
+  color: var(--gold);
+  content: "+";
+  float: right;
+  font-family: Inter, sans-serif;
+}
+
+.support-group[open] summary::after {
+  content: "-";
+}
+
+.support-links {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.support-links a {
+  border-bottom: 1px solid #eee5d7;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.35;
+  padding: 12px 18px;
+  text-decoration: none;
+}
+
+.support-links a::before {
+  color: var(--accent);
+  content: "PDF";
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 900;
+  margin-right: 8px;
+}
+
+.support-links a:hover {
+  background: #fffdf8;
+  color: var(--accent-strong);
+}
+
 .filter-bar {
   align-items: center;
   box-shadow: none;
@@ -536,8 +637,18 @@ body {
 @media screen and (max-width: 700px) {
   .impact-strip,
   .credentials-grid,
+  .support-links,
   .skills-container {
     grid-template-columns: 1fr;
+  }
+
+  .documents-heading {
+    display: block;
+  }
+
+  .support-primary {
+    display: inline-block;
+    margin-top: 14px;
   }
 
   .filter-label,

@@ -1,4 +1,4 @@
-import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -20,6 +20,21 @@ const binaryAssets = [
   ['/Juan_Sebastian_Macias_Duque_HV.pdf', 'Juan_Sebastian_Macias_Duque_HV.pdf', 'application/pdf'],
 ];
 
+const excludedCertificateNames = new Set([
+  'certificacion_laboral_instituto_crea.pdf',
+]);
+
+async function certificateAssets() {
+  const entries = await readdir(join(root, 'certificaciones'), { withFileTypes: true });
+  return entries
+    .filter(entry => entry.isFile())
+    .map(entry => entry.name)
+    .filter(name => name.toLowerCase().endsWith('.pdf'))
+    .filter(name => !excludedCertificateNames.has(name.toLowerCase()))
+    .sort((a, b) => a.localeCompare(b))
+    .map(name => [`/certificaciones/${name}`, `certificaciones/${name}`, 'application/pdf']);
+}
+
 async function readTextAsset([route, filename, type]) {
   return [route, { type, body: await readFile(join(root, filename), 'utf8') }];
 }
@@ -34,7 +49,7 @@ await mkdir(server, { recursive: true });
 
 const assets = Object.fromEntries([
   ...(await Promise.all(textAssets.map(readTextAsset))),
-  ...(await Promise.all(binaryAssets.map(readBinaryAsset))),
+  ...(await Promise.all([...binaryAssets, ...(await certificateAssets())].map(readBinaryAsset))),
 ]);
 
 const worker = `const assets = ${JSON.stringify(assets)};
@@ -60,7 +75,7 @@ export default {
   async fetch(request) {
     const url = new URL(request.url);
     const path = url.pathname.endsWith("/") && url.pathname !== "/" ? url.pathname.slice(0, -1) : url.pathname;
-    const asset = assets[path] || assets["/index.html"];
+    const asset = assets[path] || (path.includes(".") ? null : assets["/index.html"]);
 
     if (asset) {
       return responseForAsset(asset);

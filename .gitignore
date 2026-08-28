@@ -1,7 +1,8 @@
 node_modules/
 *.pdf
 !Juan_Sebastian_Macias_Duque_HV.pdf
+!certificaciones/*.pdf
 .agent/
 dist/
 site-bundle.tgz
-certificaciones/*.pdf
+certificaciones/certificacion_laboral_instituto_crea.pdf
