@@ -51,8 +51,21 @@ body {
 
 .sidebar {
   align-items: stretch;
+  max-height: calc(100vh - 56px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 24px;
+  scrollbar-gutter: stable;
   text-align: left;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #d0c5b6;
+  border-radius: 999px;
 }
 
 .sidebar-brand {
@@ -464,6 +477,8 @@ body {
   }
 
   .sidebar {
+    max-height: none;
+    overflow: visible;
     position: static;
   }
 
