@@ -4,7 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Juan Sebastián Macías Duque - Hoja de Vida Profesional</title>
+  <meta name="description" content="Hoja de vida interactiva de Juan Sebastián Macías Duque: administrador de empresas con experiencia en gerencia, proyectos productivos, educación y automatización con IA.">
+  <meta name="theme-color" content="#f7f3ec">
+  <meta property="og:title" content="Juan Sebastián Macías Duque - Hoja de Vida">
+  <meta property="og:description" content="Perfil profesional interactivo, ordenado y de lectura rápida para oportunidades en administración, proyectos, educación e innovación.">
+  <meta property="og:type" content="website">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="minimal-refresh.css">
 </head>
 <body>
 
@@ -23,6 +29,7 @@
         </div>
         
         <div>
+          <p class="eyebrow">Hoja de vida interactiva</p>
           <h1 class="name">Juan Sebastián Macías Duque</h1>
           <p class="title-sub">Administrador de Empresas</p>
         </div>
@@ -53,6 +60,13 @@
         <span class="license-tag">Carro (B1)</span>
       </div>
 
+      <nav class="quick-nav" aria-label="Secciones principales">
+        <a href="#about-section">Perfil</a>
+        <a href="#experience-section">Experiencia</a>
+        <a href="#skills-section">Competencias</a>
+        <a href="#courses-section">Cursos</a>
+      </nav>
+
       <div class="print-box">
         <button id="btn-print-pdf" class="print-btn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
@@ -63,6 +77,31 @@
     
     <!-- MAIN CONTENT -->
     <main class="main-content">
+      <section class="impact-hero glass-panel" aria-labelledby="hero-title">
+        <p class="eyebrow">Administración, proyectos y aprendizaje digital</p>
+        <h2 id="hero-title">Gestión con criterio, ejecución en campo y capacidad real para transformar procesos.</h2>
+        <p class="hero-copy">
+          Perfil híbrido entre dirección administrativa, proyectos productivos, educación para el trabajo e integración práctica de inteligencia artificial para mejorar flujos, datos y resultados.
+        </p>
+        <div class="impact-strip" aria-label="Indicadores principales">
+          <div>
+            <strong>10+ años</strong>
+            <span>trayectoria profesional</span>
+          </div>
+          <div>
+            <strong>Gerencia</strong>
+            <span>operaciones y equipos</span>
+          </div>
+          <div>
+            <strong>SENA</strong>
+            <span>formación y currículo</span>
+          </div>
+          <div>
+            <strong>IA aplicada</strong>
+            <span>automatización y procesos</span>
+          </div>
+        </div>
+      </section>
       
       <!-- PERFIL OCUPACIONAL -->
       <section class="glass-panel" id="about-section">
@@ -74,6 +113,7 @@
       
       <!-- INTERACTIVE FILTERS -->
       <section class="filter-bar" id="filters-container">
+        <span class="filter-label">Enfoque</span>
         <button class="filter-btn active" data-target="all" id="btn-filter-all">Mostrar Todo</button>
         <button class="filter-btn" data-target="admin" id="btn-filter-admin">Administración y Proyectos</button>
         <button class="filter-btn" data-target="edu" id="btn-filter-edu">Educación e Instrucción</button>

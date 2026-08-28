@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('course-search-input');
   const printBtn = document.getElementById('btn-print-pdf');
   const profileDescText = document.getElementById('profile-desc-text');
+  const filterContainer = document.getElementById('filters-container');
 
   // Professional profile texts optimized by target career paths
   const PROFILE_TEXTS = {
@@ -17,9 +18,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let activeProfile = 'all';
 
+  const visibleCount = document.createElement('span');
+  visibleCount.className = 'visible-count';
+  visibleCount.setAttribute('aria-live', 'polite');
+  if (filterContainer) {
+    filterContainer.appendChild(visibleCount);
+  }
+
+  function updateVisibleCount() {
+    const visibleExperience = Array.from(expCards).filter(card => !card.classList.contains('hidden')).length;
+    const visibleCourses = Array.from(courseCards).filter(card => !card.classList.contains('hidden')).length;
+    visibleCount.textContent = `${visibleExperience} experiencias · ${visibleCourses} cursos visibles`;
+  }
+
   // Function to filter courses based on active profile and search query
   function filterCourses() {
-    const query = searchInput.value.toLowerCase();
+    const query = searchInput ? searchInput.value.toLowerCase() : '';
     
     courseCards.forEach(card => {
       const cardProfile = card.getAttribute('data-profile');
@@ -46,6 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
         card.classList.add('hidden');
       }
     });
+
+    updateVisibleCount();
   }
 
   // Handle Profile Filter click events
@@ -92,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // 4. Update the courses list according to the profile
       filterCourses();
+      updateVisibleCount();
     });
   });
 
@@ -103,7 +120,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // Trigger Print Dialog
   if (printBtn) {
     printBtn.addEventListener('click', () => {
-      window.print();
+      window.open('Juan_Sebastian_Macias_Duque_HV.pdf', '_blank', 'noopener');
     });
   }
+
+  document.querySelectorAll('.quick-nav a').forEach(link => {
+    link.addEventListener('click', event => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      event.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  updateVisibleCount();
 });
