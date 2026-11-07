@@ -335,6 +335,7 @@ body {
 }
 
 .support-primary {
+  border: 0;
   background: var(--accent-strong);
   border-radius: 6px;
   color: #fffaf2;
@@ -343,6 +344,8 @@ body {
   font-weight: 800;
   padding: 11px 14px;
   text-decoration: none;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 .support-primary:hover {
@@ -603,6 +606,38 @@ body {
 .exp-card.hidden,
 .course-card.hidden {
   display: none;
+}
+
+.pdf-dialog {
+  width: min(620px, calc(100% - 32px));
+  max-height: min(84vh, 760px);
+  padding: 0;
+  border: 1px solid #d8d1c5;
+  border-radius: 14px;
+  color: #202824;
+  background: #fffdf8;
+  box-shadow: 0 24px 80px rgba(20, 30, 25, .28);
+}
+
+.pdf-dialog::backdrop { background: rgba(22, 30, 27, .55); }
+.pdf-dialog-card { position: relative; padding: 28px; }
+.pdf-dialog-card h2 { margin: 0 0 20px; font-size: 1.55rem; }
+.pdf-dialog-close { position: absolute; top: 12px; right: 16px; border: 0; background: none; color: #47534c; font-size: 1.8rem; cursor: pointer; }
+.pdf-field-label { display: block; margin-bottom: 8px; font-size: .92rem; font-weight: 700; }
+.pdf-dialog select { width: 100%; min-height: 44px; margin-bottom: 20px; padding: 8px 12px; border: 1px solid #cfc8bc; border-radius: 7px; background: #fff; color: inherit; font: inherit; }
+.pdf-experience-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.pdf-link-button { border: 0; background: none; color: #176b5e; font: inherit; font-size: .85rem; text-decoration: underline; cursor: pointer; }
+.pdf-experience-list { max-height: 260px; overflow: auto; display: grid; gap: 6px; padding: 10px 12px; border: 1px solid #e2ddd3; border-radius: 8px; background: #fff; }
+.pdf-experience-option { display: flex; align-items: flex-start; gap: 9px; padding: 5px 0; font-size: .88rem; line-height: 1.35; cursor: pointer; }
+.pdf-experience-option input { margin-top: 3px; accent-color: #176b5e; }
+.pdf-help { margin: 14px 0 18px; color: #58615b; font-size: .85rem; line-height: 1.45; }
+.pdf-dialog-actions { display: flex; justify-content: flex-end; gap: 10px; }
+.pdf-cancel { min-height: 42px; padding: 9px 16px; border: 1px solid #cfc8bc; border-radius: 7px; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+.pdf-dialog .print-btn { width: auto; min-height: 42px; padding: 9px 16px; }
+@media (max-width: 540px) { .pdf-dialog-card { padding: 24px 18px; } .pdf-dialog-actions { flex-direction: column-reverse; } .pdf-dialog-actions button { width: 100%; } }
+
+@media print {
+  .pdf-card-excluded { display: none !important; }
 }
 
 @media screen and (max-width: 900px) {

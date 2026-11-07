@@ -18,8 +18,8 @@
   <meta name="twitter:description" content="Perfil profesional interactivo con experiencia, formación, certificaciones y hoja de vida descargable.">
   <meta name="twitter:image" content="https://juanmaciasduque-ui.github.io/foto.png">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20260828-3">
-  <link rel="stylesheet" href="minimal-refresh.css?v=20260828-3">
+  <link rel="stylesheet" href="styles.css?v=20261107-1">
+  <link rel="stylesheet" href="minimal-refresh.css?v=20261107-1">
 </head>
 <body>
 
@@ -81,7 +81,7 @@
       <div class="print-box">
         <button id="btn-print-pdf" class="print-btn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-          <span>Descargar PDF</span>
+          <span>Preparar PDF</span>
         </button>
       </div>
     </aside>
@@ -416,7 +416,7 @@
             <h2 class="section-title">Soportes Descargables</h2>
             <p class="documents-intro">Certificados y diplomas organizados por tipo de evidencia profesional.</p>
           </div>
-          <a class="support-primary" href="Juan_Sebastian_Macias_Duque_HV.pdf" download>Descargar CV PDF</a>
+          <button class="support-primary" id="btn-custom-pdf">Preparar CV PDF</button>
         </div>
 
         <div class="support-groups">
@@ -741,6 +741,30 @@
     
   </div>
 
-  <script src="app.js?v=20260828-3"></script>
+  <dialog class="pdf-dialog" id="pdf-dialog" aria-labelledby="pdf-dialog-title">
+    <form method="dialog" class="pdf-dialog-card" id="pdf-options-form">
+      <button type="button" class="pdf-dialog-close" id="pdf-dialog-close" aria-label="Cerrar">×</button>
+      <p class="eyebrow">Personaliza tu hoja de vida</p>
+      <h2 id="pdf-dialog-title">Preparar PDF</h2>
+      <label class="pdf-field-label" for="pdf-profile">Enfoque del perfil</label>
+      <select id="pdf-profile" name="profile">
+        <option value="admin">Administración y proyectos</option>
+        <option value="edu">Educación e instrucción</option>
+        <option value="all">Mostrar todo</option>
+      </select>
+      <div class="pdf-experience-heading">
+        <span class="pdf-field-label">Experiencias que aparecerán</span>
+        <button type="button" class="pdf-link-button" id="pdf-select-visible">Marcar las del enfoque</button>
+      </div>
+      <div class="pdf-experience-list" id="pdf-experience-list"></div>
+      <p class="pdf-help">Al continuar, se abrirá la vista de impresión. Allí elige “Guardar como PDF”.</p>
+      <div class="pdf-dialog-actions">
+        <button type="button" class="pdf-cancel" id="pdf-cancel">Cancelar</button>
+        <button type="button" class="print-btn" id="pdf-generate">Continuar a guardar PDF</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js?v=20261107-1"></script>
 </body>
 </html>

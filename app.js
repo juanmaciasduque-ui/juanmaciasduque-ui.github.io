@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const courseCards = document.querySelectorAll('.course-card');
   const searchInput = document.getElementById('course-search-input');
   const printBtn = document.getElementById('btn-print-pdf');
+  const customPrintBtn = document.getElementById('btn-custom-pdf');
+  const pdfDialog = document.getElementById('pdf-dialog');
+  const pdfProfile = document.getElementById('pdf-profile');
+  const pdfExperienceList = document.getElementById('pdf-experience-list');
+  const pdfGenerateBtn = document.getElementById('pdf-generate');
   const profileDescText = document.getElementById('profile-desc-text');
   const filterContainer = document.getElementById('filters-container');
 
@@ -110,12 +115,95 @@ document.addEventListener('DOMContentLoaded', () => {
     searchInput.addEventListener('input', filterCourses);
   }
 
-  // Trigger Print Dialog
-  if (printBtn) {
-    printBtn.addEventListener('click', () => {
-      window.open('Juan_Sebastian_Macias_Duque_HV.pdf', '_blank', 'noopener');
+  const pdfButtons = [printBtn, customPrintBtn].filter(Boolean);
+  const pdfOriginalTitle = document.title;
+  let printRestore = null;
+
+  function profileMatches(profile, cardProfile) {
+    if (profile === 'all') return true;
+    if (profile === 'admin') return cardProfile === 'admin' || cardProfile === 'other';
+    return cardProfile === 'edu' || cardProfile === 'other';
+  }
+
+  function renderPdfExperienceOptions() {
+    if (!pdfExperienceList) return;
+    const profile = pdfProfile.value;
+    pdfExperienceList.replaceChildren();
+    expCards.forEach((card, index) => {
+      const matches = profileMatches(profile, card.getAttribute('data-profile'));
+      const label = document.createElement('label');
+      label.className = 'pdf-experience-option';
+      label.hidden = !matches;
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.value = String(index);
+      checkbox.checked = matches;
+      const description = document.createElement('span');
+      description.textContent = `${card.querySelector('.job-title').textContent} — ${card.querySelector('.company-name').textContent}`;
+      label.append(checkbox, description);
+      pdfExperienceList.append(label);
     });
   }
+
+  function openPdfOptions() {
+    if (!pdfDialog) return;
+    pdfProfile.value = activeProfile;
+    renderPdfExperienceOptions();
+    pdfDialog.showModal();
+  }
+
+  pdfButtons.forEach(button => button.addEventListener('click', openPdfOptions));
+  pdfProfile?.addEventListener('change', renderPdfExperienceOptions);
+  document.getElementById('pdf-select-visible')?.addEventListener('click', () => {
+    pdfExperienceList?.querySelectorAll('label:not([hidden]) input').forEach(input => { input.checked = true; });
+  });
+  document.getElementById('pdf-cancel')?.addEventListener('click', () => pdfDialog?.close());
+  document.getElementById('pdf-dialog-close')?.addEventListener('click', () => pdfDialog?.close());
+
+  pdfGenerateBtn?.addEventListener('click', () => {
+    const selected = new Set(Array.from(pdfExperienceList.querySelectorAll('input:checked'), input => Number(input.value)));
+    if (selected.size === 0) {
+      window.alert('Selecciona al menos una experiencia laboral para el PDF.');
+      return;
+    }
+
+    const profile = pdfProfile.value;
+    const previous = {
+      title: document.title,
+      description: profileDescText?.textContent,
+      exp: Array.from(expCards, card => ({ excluded: card.classList.contains('pdf-card-excluded'), hidden: card.classList.contains('hidden') })),
+      courses: Array.from(courseCards, card => ({ excluded: card.classList.contains('pdf-card-excluded'), hidden: card.classList.contains('hidden') })),
+    };
+    expCards.forEach((card, index) => {
+      card.classList.toggle('pdf-card-excluded', !selected.has(index));
+      card.classList.remove('hidden');
+    });
+    courseCards.forEach(card => {
+      const included = profileMatches(profile, card.getAttribute('data-profile'));
+      card.classList.toggle('pdf-card-excluded', !included);
+      if (included) card.classList.remove('hidden');
+    });
+    if (profileDescText) profileDescText.textContent = PROFILE_TEXTS[profile];
+    document.title = `Hoja_de_Vida_Juan_Sebastian_Macias_Duque_${profile}`;
+    pdfDialog.close();
+
+    printRestore = () => {
+      expCards.forEach((card, index) => {
+        card.classList.toggle('pdf-card-excluded', previous.exp[index].excluded);
+        card.classList.toggle('hidden', previous.exp[index].hidden);
+      });
+      courseCards.forEach((card, index) => {
+        card.classList.toggle('pdf-card-excluded', previous.courses[index].excluded);
+        card.classList.toggle('hidden', previous.courses[index].hidden);
+      });
+      if (profileDescText && previous.description !== undefined) profileDescText.textContent = previous.description;
+      document.title = previous.title || pdfOriginalTitle;
+      printRestore = null;
+    };
+    window.setTimeout(() => window.print(), 150);
+  });
+
+  window.addEventListener('afterprint', () => printRestore?.());
 
   document.querySelectorAll('.quick-nav a').forEach(link => {
     link.addEventListener('click', event => {
